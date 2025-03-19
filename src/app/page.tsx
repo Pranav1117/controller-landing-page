@@ -1,103 +1,166 @@
+"use client";
 import Image from "next/image";
+import { Poppins, Montserrat } from "next/font/google";
+import Playstion from "./components/icons/Playstion";
+import { motion } from "motion/react";
+
+const montserrat = Montserrat({ subsets: ["latin"], weight: "800" });
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["100", "400", "500", "600", "700", "800", "900"],
+});
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <main className="text-white space-y-2 h-screen w-[90%] mx-auto z-30">
+      {/* navbar */}
+      <nav className="flex h-[3.5rem] justify-between items-center">
+        <div className="cursor-pointer">
+          <Playstion />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+        <div>
+          <button className="cursor-pointer shadow-lg bg-white p-4 text-[#03766F] ">
+            BUY NOW
+          </button>
+        </div>
+      </nav>
+
+      {/* mian content */}
+      <div className="h-[calc(100vh-13rem)] flex mt-4 justify-between">
+        {/* side vertical heading */}
+        <div
+          className="mx-auto opacity-50 tracking-[5px] w-[10%] flex items-end"
+          style={{ writingMode: "vertical-rl", textOrientation: "sideways" }}
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+          SPECIAL {"\u00A0"} EDITION
+        </div>
+
+        {/* main hero section */}
+        <div className="flex w-[80%] ">
+          {/* hero section text */}
+          <motion.div
+            className="w-1/2 flex flex-col gap-10"
+            // initial={{ opacity: 0, x: -40, filter: "blur(5px)" }}
+            // animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+            // transition={{ duration: 0.5, ease: "easeInOut" }}
+          >
+            <motion.h3
+              className={`${montserrat.className} relative left-17 scale-x-130 tracking-tight text-[120px] leading-[0.9] drop-shadow-[2px_2px_2px_rgba(0,0,0,0.5)] mt-[10px]`}
+            >
+              ALPINE <br /> GRE
+              <motion.span
+                initial={{ y: -50, rotateZ: 0 }}
+                animate={{ y: 0, rotateZ: [0, 20, -10, 0] }}
+                transition={{ delay: 3, duration: 0.6, ease: "easeInOut" }}
+              >
+                E
+              </motion.span>
+              N
+            </motion.h3>
+
+            <p className="font-normal tracking-wide scale-y-125">
+              DUALSHOCK 4<br /> WIRELESS CONTROLLER
+            </p>
+            <motion.p
+              className={`${poppins.className} text-[14px] font-extralight}`}
+              initial={{ opacity: 0, filter: "blur(5px)" }}
+              animate={{ opacity: 1, filter: "blur(0px)" }}
+              transition={{ delay: 2, duration: 0.5 }}
+            >
+              Refresh you set up this spring whith this contrasting green and
+              white wireless controller. play in style with new alpine green
+              edition of DUALSHOCK34 wireless controller.
+            </motion.p>
+          </motion.div>
+
+          {/* hero section image */}
+          <motion.div
+            className="w-1/2 z-30"
+            initial={{ x: -200 }}
+            animate={{
+              x: 0,
+              transition: { duration: 1.5, ease: "easeOut" },
+            }}
+          >
+            <motion.div
+              initial={{ scale: 4, filter: "blur(5px)" }}
+              animate={{
+                scale: [4, 0.9, 1.1, 1],
+                filter: "blur(0px)",
+              }}
+              transition={{ delay: 1.2, duration: 0.5, ease: "easeIn" }}
+            >
+              <Image
+                className="rotate-16 relative -left-15 drop-shadow-[1px_1px_10px_rgba(0,0,0,0.5)]"
+                src={"/controller-1.png"}
+                height={100}
+                width={900}
+                alt="controller preview"
+              />
+            </motion.div>
+          </motion.div>
+        </div>
+
+        {/* side vertical heading */}
+        <div
+          className={`mx-auto text-[10px] opacity-50 tracking-[2px] w-[10%] flex items-start ${poppins.className}`}
+          style={{ writingMode: "vertical-rl", textOrientation: "sideways" }}
         >
+          @ 2019 SONY INTERACTIVE ENTERTAINMENT LLC
+        </div>
+      </div>
+
+      {/* footer */}
+      <motion.footer
+        className="bg-white px-6 py-2 h-[8rem] w-[80%] mx-auto flex justify-between items-center gap-4"
+        initial={{ opacity: 0, filter: "blur(5px)" }}
+        animate={{ opacity: 1, filter: "blur(0px)" }}
+        transition={{ delay: 2, duration: 0.5, ease: "easeInOut" }}
+      >
+        <div className="text-[#28847E] flex items-center gap-2">
+          {" "}
+          01 <div className="h-1 w-20 bg-[#28847E]"></div> 03
+        </div>
+        <div>
+          {" "}
           <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
+            className=""
+            src={"/controller-1.png"}
+            height={100}
+            width={150}
+            alt="controller preview"
           />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        </div>
+        <div>
+          {" "}
           <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
+            className=""
+            src={"/controller-2.png"}
+            height={100}
+            width={100}
+            alt="controller preview"
           />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        </div>
+        <div>
+          {" "}
+          <Image
+            className=""
+            src={"/controller-3.png"}
+            height={100}
+            width={150}
+            alt="controller preview"
+          />
+        </div>
+        <div className="bg-[#28847E] overflow-hidden w-[300px] h-[100px]">
+          <Image
+            className="opacity-45 -rotate-20 relative -right-16 -top-10"
+            src={"/controller-1.png"}
+            height={100}
+            width={600}
+            alt="controller preview"
+          />
+        </div>
+      </motion.footer>
+    </main>
   );
 }
