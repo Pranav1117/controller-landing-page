@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import { Dela_Gothic_One, Poppins } from "next/font/google";
+import { Dela_Gothic_One } from "next/font/google";
 import "./globals.css";
-
 
 const delaGothicOne = Dela_Gothic_One({ subsets: ["latin"], weight: "400" });
 
