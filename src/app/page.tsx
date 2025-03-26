@@ -1,8 +1,10 @@
 "use client";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Poppins, Montserrat } from "next/font/google";
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import Playstion from "./components/icons/Playstion";
+import Loader from "./components/Loader";
 
 const montserrat = Montserrat({ subsets: ["latin"], weight: "800" });
 const poppins = Poppins({
@@ -11,10 +13,29 @@ const poppins = Poppins({
 });
 
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(true);
+
   return (
     <>
-      {/* {isLoaded ? ( */}
-      <main className="text-white space-y-2 h-screen w-[90%] mx-auto z-30">
+      <AnimatePresence>
+        {isLoading && (
+          <motion.div
+            className="w-full h-screen bg-red-100 relative z-100"
+            key="loader"
+            initial={{ opacity: 1, scale: 1 }}
+            exit={{
+              opacity: 0,
+              // y: -1000,
+              filter: "blur(10px)",
+            }}
+            transition={{ duration: 1, opacity: 0, ease: "easeInOut" }}
+          >
+            <Loader />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <main className=" text-white space-y-2 h-screen w-[90%] mx-auto z-5">
         {/* navbar */}
         <nav className="flex h-[3.5rem] justify-between items-center">
           <div className="cursor-pointer">
@@ -70,11 +91,11 @@ export default function Home() {
 
             {/* hero section image */}
             <motion.div
-              className="w-1/2 z-30"
+              className="w-1/2 z-10 absolute top-[10%] -right-[1%]"
               initial={{ x: -200 }}
               animate={{
                 x: 0,
-                transition: { duration: 1.5, ease: "easeOut" },
+                transition: { delay: 2, duration: 1.5, ease: "easeOut" },
               }}
             >
               <motion.div
@@ -88,9 +109,11 @@ export default function Home() {
                 <Image
                   className="rotate-16 relative -left-15 drop-shadow-[1px_1px_10px_rgba(0,0,0,0.5)]"
                   src={"/controller-1.png"}
-                  height={100}
-                  width={900}
+                  height={550}
+                  width={550}
+                  loading="lazy"
                   alt="controller preview"
+                  onLoad={() => setIsLoading(false)}
                 />
               </motion.div>
             </motion.div>
@@ -160,9 +183,6 @@ export default function Home() {
           </div>
         </motion.footer>
       </main>
-      {/* ) : (
-        "Loading"
-      )} */}
     </>
   );
 }
