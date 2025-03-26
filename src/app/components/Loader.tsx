@@ -1,5 +1,5 @@
-import { motion, AnimatePresence } from "motion/react";
-import { Montserrat, Poppins } from "next/font/google";
+import { motion } from "motion/react";
+import { Montserrat } from "next/font/google";
 
 const monteserrat = Montserrat({
   subsets: ["latin"],

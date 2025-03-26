@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { Poppins, Montserrat } from "next/font/google";
 import { AnimatePresence, motion } from "motion/react";
