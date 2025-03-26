@@ -20,15 +20,14 @@ export default function Home() {
       <AnimatePresence>
         {isLoading && (
           <motion.div
-            className="w-full h-screen bg-red-100 relative z-100"
+            className="w-full h-screen text-white bg-[#1b9c93] relative z-100"
             key="loader"
             initial={{ opacity: 1, scale: 1 }}
             exit={{
-              opacity: 0,
-              // y: -1000,
+              x: 2000,
               filter: "blur(10px)",
             }}
-            transition={{ duration: 1, opacity: 0, ease: "easeInOut" }}
+            transition={{ duration: 1, ease: "easeInOut" }}
           >
             <Loader />
           </motion.div>
@@ -92,10 +91,10 @@ export default function Home() {
             {/* hero section image */}
             <motion.div
               className="w-1/2 z-10 absolute top-[10%] -right-[1%]"
-              initial={{ x: -200 }}
+              initial={{ x: -400 }}
               animate={{
                 x: 0,
-                transition: { delay: 2, duration: 1.5, ease: "easeOut" },
+                transition: { duration: 1.5, ease: "easeOut" },
               }}
             >
               <motion.div
